@@ -1,0 +1,143 @@
+/* Basic Browser Default Reset */
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    padding: 10;
+    margin: 5;
+  }
+  nav a:hover {
+    color: #0000dd; /* Hex colour. */
+  }
+  nav ul { display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    align-content: center;
+    font-size: 15px;
+  }
+  /* nav ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+  } */
+  
+  nav ul > li {
+    margin-left:35px;
+    margin-right:35px;
+  }
+
+  /* input ::placeholder{
+    
+  } */
+  
+  /*
+   * Colours JUST FOR TESTING...
+   */
+  
+  /* h1 { background-color: lightseagreen; }  */
+  nav { background-color: lightsalmon; }
+  .table { background-color: lightslategray; }
+  .syn { background-color: darkgoldenrod; }
+  .ch1 { background-color: darkmagenta; }
+  .ch2 { background-color: darkturquoise; }
+  footer { background-color: plum; }
+  
+  
+  /*
+   * Let's initialize our grid!
+   */
+  
+  /*
+   * Much like flex, to have grid items / cells,
+   * you need to have a container with display: grid.
+   * The contents (direct descendents) will follow
+   * grid rules!
+   * ***We may be using body for this example...
+   * ***but you can put this on most anything!!!
+   */
+  
+  body {
+    display: grid;
+    /* place-items: center;  */
+    /* Set widths for columns... */
+    /* Column 1: 25%; Column 2: 25%; Column 3: 50% */
+    grid-template-columns: 40% 60%;
+    /* Set heights for rows... */
+    grid-template-rows:
+      110px /* Logo / Navigation */
+      300px /* Table / To-Do Form*/
+      300px /* Table / Active To-Do Form*/ 
+      300px /* Table / Done Form*/
+      60px ;/* Footer */     
+    /*
+     * Using the "grid-area" names we define...
+     * We can write out where each one belongs!
+     * Remember to represent EACH column AND row for best results!
+     */
+    grid-template-areas:
+      "logo nav"
+      "table-c syn"
+      "table-c ch1"
+      "table-c ch2"
+      "footer footer";
+      /* grid-auto-rows: auto; */
+  }  
+
+  /* Name each section of our grid, so we can easily place our elements on it! */
+  .grid-container { grid-area: logo; }
+  /* #search-form { grid-area: search; } */
+  nav { grid-area: nav; }
+  .table { grid-area: table-c; }
+  .syn { grid-area: syn; }
+  .ch1 { grid-area: ch1; }
+  .ch2 { grid-area: ch2; }
+  footer{ grid-area: footer;}
+  /* stop HERE FIRST COMMIT
+  /* Tablet */
+    /* Column 1: 33%; Column 2: 33%; Column 3: 33% */
+  @media screen and ( min-width: 600px ) 
+  {
+    body 
+    { /* 3 columns; 8 rows. */
+      grid-template-columns: 
+      calc( 100% / 3 )
+      calc( 100% / 3 )
+      calc( 100% / 3 );
+      grid-template-rows:
+        110px /* Logo / Nav / Nav */
+        200px /* table / Syn / ch1 */
+        200px /* table / ch2/ ch2 */
+        60px ;/* footer / footer / footer */
+
+      /* Set up where the elements should fill for tablet... */
+      grid-template-areas:
+        "logo nav nav"
+        "table-c syn ch1"
+        "table-c ch2 ch2"
+        "footer footer footer";
+    }
+  }
+  /* stop HERE for 2nd commit tablet done
+  /* Large tablet; laptop / desktop. */
+  @media screen and ( min-width: 1024px ) {
+    body { /* 6 columns; 7 rows. */
+      grid-template-columns:
+        25%
+        25%
+        25%
+        25%;
+
+      grid-template-rows:
+        60px /* Logo / Nav / Nav/ Nav */
+        800px /* table / syn / ch1 / ch2 */
+        60px /* footer / footer /footer / footer */
+        ; 
+      /* Set up where the elements should fill for laptop / desktop... */
+      grid-template-areas:
+        "logo      nav     nav     nav"
+        "table-c   syn     ch1     ch2"
+        "footer    footer  footer  footer";
+    }
+  }
+  
